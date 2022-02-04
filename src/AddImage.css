@@ -1,0 +1,10 @@
+.h1{
+    flex-flow: column wrap;
+    text-align: center;
+    justify-content: center;
+    
+  }
+#title{
+    background-color: red;
+
+}

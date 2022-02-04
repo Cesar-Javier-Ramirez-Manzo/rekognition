@@ -1,0 +1,108 @@
+.App {
+    text-align: center;
+    padding-left: 0%;
+    padding-right: 0%;
+    width: 100%;
+    background: burlywood;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: calc(10px + 2vmin);
+    color: black;
+  }
+
+
+.displayImage{
+  padding: 10px; 
+  margin: 10px; 
+  border-radius: 15%;
+  text-align: center;
+  width: 250px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+  
+
+.titles{
+
+  font-weight: bold;
+  text-align: center;
+  font-size: xx-large;
+
+  border: 2px solid black; 
+  border-radius: 10%;
+  border: black 2px;
+}
+
+  .menu{
+    background: linear-gradient(120deg, white 5%, #d1d1d1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: calc(10px + 2vmin);
+    color: black;
+    border-radius: 10%;
+    margin: 50px;
+    padding: 35px;
+  }
+
+  .columnas{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bold;
+  }
+  #imageManager{
+    display: flex;
+    flex-direction: row wrap;
+    flex-grow: 1;
+    margin: 15%;
+  }
+
+  #selectedImage{
+    height: 2dp;
+    width: 100%;
+    box-shadow:2px 5px 5px black ;
+}  
+
+#datos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 5dp;
+}
+
+#imagesBox{
+  align-items: center;
+  display: flex;
+
+}
+
+.tabla{
+  text-align: center;
+}
+
+#lienzo{
+  height: 100%;
+}
+
+#buttonSelectFile{
+  display: none;
+}
+#buttonSelectedFile{
+  display: none;
+}
+
+.elementActive{
+  transition: 350ms;
+}
+
+.elementInactive{
+  display: none;
+}
