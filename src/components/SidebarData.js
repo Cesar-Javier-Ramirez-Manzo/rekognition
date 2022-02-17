@@ -17,8 +17,14 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Buscar rostros',
+    title: 'Buscar en imagen',
     path: '/Buscar',
+    icon: <IoIcons.IoIosSearch />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Buscar en video',
+    path: '/Video',
     icon: <IoIcons.IoIosSearch />,
     cName: 'nav-text'
   }

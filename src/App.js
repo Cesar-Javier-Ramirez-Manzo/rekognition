@@ -6,6 +6,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import SearchFaces from './components/SearchFaces'
 import Inicio from './pages/Home'
+import Video from './pages/VideoSearch'
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
         <Switch> 
           <Route path='/Indexar' component={AddImage} />
           <Route path='/Buscar' component={SearchFaces} />
+          <Route path='/Video' component={Video} />
           <Route path='/' component={Inicio} />
+          
         </Switch>
       </Router>
       

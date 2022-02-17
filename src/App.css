@@ -106,3 +106,8 @@
 .elementInactive{
   display: none;
 }
+
+.tableImage{
+  width: 150px;
+  height: 100px;
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import { Container, Button,  Table, Modal } from 'react-bootstrap';
+import { Container, Button, Table, Modal } from 'react-bootstrap';
 import axios from 'axios'
 import { TiDelete, TiEdit } from 'react-icons/ti';
-import { BsInputCursorText,BsCheckLg,BsFillCheckCircleFill } from 'react-icons/bs';
+import { BsInputCursorText, BsCheckLg, BsFillCheckCircleFill } from 'react-icons/bs';
 import { AiFillFileAdd } from 'react-icons/ai';
 import imagen from '../assets/Cesar1.jpg'
 class AddImage extends React.Component {
@@ -22,24 +22,24 @@ class AddImage extends React.Component {
             dbId: "",
             fId: ""
         },
-        handleName:""
+        handleName: ""
     }
     componentDidMount = async () => {
         this.loadFaces()
     }
-    handleCloseModalAlert = ()=>{
-        this.setState({showModalAlert: false})
+    handleCloseModalAlert = () => {
+        this.setState({ showModalAlert: false })
     }
-    handleCloseModal = ()=>{
-        this.setState({showModal: false})
+    handleCloseModal = () => {
+        this.setState({ showModal: false })
     }
-    handleOpenModal = (e)=>{
-        this.setState({handleName: e['nombre']})
-        this.setState({currentFace: e})
-        this.setState({showModal: true})
+    handleOpenModal = (e) => {
+        this.setState({ handleName: e['nombre'] })
+        this.setState({ currentFace: e })
+        this.setState({ showModal: true })
         console.log(this.state.currentFace)
     }
-    
+
     loadFaces = async () => {
         await axios.get("https://t5ggb319a1.execute-api.us-east-2.amazonaws.com/imagen/todo")
             .then(response => {
@@ -80,8 +80,11 @@ class AddImage extends React.Component {
         await axios.post("https://t5ggb319a1.execute-api.us-east-2.amazonaws.com/imagen/subir/" + this.state.name, imageData)
             .then(response => {
                 console.log(response.data)
-                this.setState({showModalAlert: true})
-                this.loadFaces()
+                setTimeout(() => {
+                    this.setState({ showModalAlert: true })
+                    this.loadFaces()
+                }, 5000);
+
             }).catch(error => {
                 console.log(error)
             })
@@ -95,7 +98,7 @@ class AddImage extends React.Component {
         await axios.post("https://t5ggb319a1.execute-api.us-east-2.amazonaws.com/imagen", itemData)
             .then(response => {
                 console.log(response)
-                this.setState({showModalAlert: true})
+                this.setState({ showModalAlert: true })
                 this.loadFaces()
             }).catch(error => {
                 console.log(error)
@@ -110,9 +113,8 @@ class AddImage extends React.Component {
 
         await axios.post("https://t5ggb319a1.execute-api.us-east-2.amazonaws.com/imagen/editar", updateData)
             .then(response => {
-                console.log(response)
-                this.setState({showModal: false})
-                this.setState({showModalAlert: true})
+                this.setState({ showModal: false })
+                this.setState({ showModalAlert: true })
                 this.loadFaces()
             }).catch(error => {
                 console.log(error)
@@ -167,6 +169,7 @@ class AddImage extends React.Component {
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    {/* <th>Imagen</th> */}
                                     <th>Editar</th>
                                     <th>Eliminar</th>
                                 </tr>
@@ -176,6 +179,7 @@ class AddImage extends React.Component {
                                 {this.state.listFaces.map((face) => (
                                     <tr >
                                         <td>{face['nombre']}</td>
+                                        {/* <td><img className="tableImage" src="https://pbs.twimg.com/media/EUCh095XQAIXfbM.jpg"></img></td> */}
                                         <td><Button variant="info" onClick={() => this.handleOpenModal(face)} ><TiEdit></TiEdit></Button></td>
                                         <td><Button variant="danger" onClick={() => this.deleteFace(face)}> <TiDelete></TiDelete> </Button></td>
 
@@ -198,14 +202,14 @@ class AddImage extends React.Component {
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            
+
                             <label>Nombre nuevo</label>
                             <br></br>
-                            <input value={this.state.handleName} onChange={(e)=>this.setState({handleName:e.target.value})}></input>
+                            <input value={this.state.handleName} onChange={(e) => this.setState({ handleName: e.target.value })}></input>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="primary" onClick={()=>this.editData()} ><BsCheckLg></BsCheckLg></Button>
-                            <Button variant="danger" onClick={()=>this.handleCloseModal()}><TiDelete></TiDelete></Button>
+                            <Button variant="primary" onClick={() => this.editData()} ><BsCheckLg></BsCheckLg></Button>
+                            <Button variant="danger" onClick={() => this.handleCloseModal()}><TiDelete></TiDelete></Button>
                         </Modal.Footer>
                     </Modal>
                     <Modal
@@ -220,12 +224,12 @@ class AddImage extends React.Component {
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            
-                           
+
+
                         </Modal.Body>
                         <Modal.Footer>
 
-                            <Button variant="danger" onClick={()=>this.handleCloseModalAlert()}><TiDelete></TiDelete></Button>
+                            <Button variant="danger" onClick={() => this.handleCloseModalAlert()}><TiDelete></TiDelete></Button>
                         </Modal.Footer>
                     </Modal>
                 </Container>
